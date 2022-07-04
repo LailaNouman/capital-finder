@@ -16,17 +16,14 @@ class handler(BaseHTTPRequestHandler):
             url = 'https://restcountries.com/v3.1/name/'
             r = requests.get(url + word)
             data = r.json()
-            print(data)
             for word_data in data:
-
                 definition = f"The capital of {word} is {word_data['capital'][0]}"
                 definitions.append(definition)
 
             message = str(definitions)
 
         else:
-            message = "Please provide me with a word"
-
+            message = "Please provide me with a word = name of a country"
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')

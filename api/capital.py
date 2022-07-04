@@ -16,7 +16,6 @@ class handler(BaseHTTPRequestHandler):
             url = 'https://restcountries.com/v3.1/capital/'
             r = requests.get(url + word)
             data = r.json()
-            print(data)
             for word_data in data:
                 definition = f"{word} is the capital of {word_data['name']['common']}"
                 definitions.append(definition)
@@ -24,8 +23,7 @@ class handler(BaseHTTPRequestHandler):
             message = str(definitions)
 
         else:
-            message = "Please provide me with a word"
-
+            message = "Please provide me with a word = name of a capital"
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
